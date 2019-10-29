@@ -1,14 +1,16 @@
 const router = require("express").Router();
 
 // Authcheck
-const authCheck = (err, user) => {
-    if(!user) {
+const authCheck = (res, req, next) => {
+    if (!req.user) {
         res.redirect("/auth/login")
+    } else {
+        next()
     }
-    next();
 }
 
-// profile route
-router.get("/profile/", authCheck, (req, res) => {
 
+// profile route
+router.get("/profile/", authCheck(), (req, res) => {
+    res.redirect("/profile/")
 })
