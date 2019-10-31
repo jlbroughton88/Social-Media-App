@@ -26,16 +26,23 @@ app.get("/", (req, res) => {
     res.send("Hello")
 });
 
-app.use("/auth/", authRoutes);
-// app.use("/profile/", profileRoutes)
+
+
+
+
+
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true
     // cookie: { secure: true }
 }))
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use("/auth/", authRoutes);
+// app.use("/profile/", profileRoutes)
+
 
 // Production deploy stuff
 // if(process.env.NODE_ENV === "production") {

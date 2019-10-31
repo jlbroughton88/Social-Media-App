@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const passport = require("passport");
 
-router.get("/login", () => {
+router.get("/login", (req, res) => {
     res.send("Login")
 });
 
