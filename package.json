@@ -1,0 +1,28 @@
+{
+  "name": "Social-Media-App",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlbroughton88/Social-Media-App.git",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "Jacob Broughton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jlbroughton88/Social-Media-App/issues"
+  },
+  "homepage": "https://github.com/jlbroughton88/Social-Media-App#readme",
+  "dependencies": {
+    "next": "^9.1.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  }
+}
