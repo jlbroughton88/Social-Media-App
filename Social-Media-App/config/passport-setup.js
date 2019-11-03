@@ -1,8 +1,8 @@
 const passport = require("passport");
 const FacebookStrategy = require("passport-facebook").Strategy
 require("dotenv").config();
-const clientID = process.env.clientID;
-const clientSecret = process.env.clientSecret;
+const clientID = process.env.CLIENT_ID;
+const clientSecret = process.env.CLIENT_SECRET;
 const User = require("../models/User");
 
 passport.serializeUser((user, done) => {

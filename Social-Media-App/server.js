@@ -1,5 +1,6 @@
 const express = require("express");
-const app = express();
+const next = require("next");
+const server = express();
 const passportSetup = require("./config/passport-setup")
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth-routes");
@@ -9,6 +10,10 @@ const session = require("express-session")
 const path = require("path")
 require("dotenv").config();
 const MONGODB_URI = process.env.MONGODB_URI;
+
+const dev = process.env.NODE_ENV !== "production";
+const app = next({ dev });
+const handle = app.getRequestHandler();
 
 
 
@@ -22,33 +27,33 @@ mongoose.connect(MONGODB_URI, {
 })
 
 // Home route
-app.get("/", (req, res) => {
+server.get("/", (req, res) => {
     res.send("Hello")
 });
 
 
-app.use(session({
+server.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true
     // cookie: { secure: true }
 }))
-app.use(passport.initialize());
-app.use(passport.session());
+server.use(passport.initialize());
+server.use(passport.session());
 
-app.use("/auth/", authRoutes);
-// app.use("/profile/", profileRoutes)
+server.use("/auth/", authRoutes);
+// server.use("/profile/", profileRoutes)
 
 
 // Production deploy stuff
 // if(process.env.NODE_ENV === "production") {
-//     app.use(express.static("client/build"));
-//     app.get("/*", (req, res) => {
+//     server.use(express.static("client/build"));
+//     server.get("/*", (req, res) => {
 //       res.sendFile(path.join(__dirname, "./client/build/index.html"))
 //     })
 //   } else {
-//     app.use(express.static(path.join(__dirname, "/client/public")));
-//     app.get("/*", (req, res) => {
+//     server.use(express.static(path.join(__dirname, "/client/public")));
+//     server.get("/*", (req, res) => {
 //       res.sendFile(path.join(__dirname, "./client/public/index.html"))
 //     })
 //   }
@@ -56,6 +61,6 @@ app.use("/auth/", authRoutes);
 
 
 // Server start
-app.listen(process.env.PORT || 5000, () => {
+server.listen(process.env.PORT || 5000, () => {
     console.log("Server listening at port 5000");
 });
