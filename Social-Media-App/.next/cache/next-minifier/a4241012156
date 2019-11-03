@@ -1,0 +1,1 @@
+{"code":"(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{O2ls:function(n,u,i){\"use strict\";i.r(u);var o=i(\"q1tI\"),t=i.n(o).a.createElement;u.default=function(){return t(\"div\",null,t(\"h1\",null,\"Log in\"))}},u6Hu:function(n,u,i){(window.__NEXT_P=window.__NEXT_P||[]).push([\"/login\",function(){return i(\"O2ls\")}])}},[[\"u6Hu\",1,0]]]);"}
