@@ -6,16 +6,20 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth-routes");
 const passport = require("passport");
 const session = require("express-session")
-// const profileRoutes = require("./routes/profile-routes")
-const path = require("path")
+const profileRoutes = require("./routes/profile-routes")
 require("dotenv").config();
+const instantListen = require("instant-listen");
 const MONGODB_URI = process.env.MONGODB_URI;
 
-const dev = process.env.NODE_ENV !== "production";
-const app = next({ dev });
-const handle = app.getRequestHandler();
+const handler = instantListen(async () => {
+    const app = next({ dev: process.env.NODE_ENV !== 'production' })
+    const handle = app.getRequestHandler();
+    await app.prepare();
+    return handle;
+})
 
 
+// app.prepare().then(() => {
 
 // Connect to mongoose
 mongoose.connect(MONGODB_URI, {
@@ -24,12 +28,9 @@ mongoose.connect(MONGODB_URI, {
     useCreateIndex: true
 }, () => {
     console.log("Mongodb Connected!")
-})
-
-// Home route
-server.get("/", (req, res) => {
-    res.send("Hello")
 });
+
+
 
 
 server.use(session({
@@ -41,26 +42,13 @@ server.use(session({
 server.use(passport.initialize());
 server.use(passport.session());
 
-server.use("/auth/", authRoutes);
-// server.use("/profile/", profileRoutes)
 
+server.use("/auth", authRoutes);
+server.use("/profile", profileRoutes)
+server.get("*", handler);
 
-// Production deploy stuff
-// if(process.env.NODE_ENV === "production") {
-//     server.use(express.static("client/build"));
-//     server.get("/*", (req, res) => {
-//       res.sendFile(path.join(__dirname, "./client/build/index.html"))
-//     })
-//   } else {
-//     server.use(express.static(path.join(__dirname, "/client/public")));
-//     server.get("/*", (req, res) => {
-//       res.sendFile(path.join(__dirname, "./client/public/index.html"))
-//     })
-//   }
+server.listen(5000, () => {
+    console.log("Server listening at port 5000")
+    handler.init()
+})
 
-
-
-// Server start
-server.listen(process.env.PORT || 5000, () => {
-    console.log("Server listening at port 5000");
-});

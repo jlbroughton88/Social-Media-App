@@ -7,12 +7,13 @@ const User = require("../models/User");
 
 passport.serializeUser((user, done) => {
     console.log("Serializing user...");
-    done(null, user);
+    done(null, user.id);
 })
 
 passport.deserializeUser((id, done) => {
-    console.log("Deserializing user...");
-    done(null, id);
+    User.findById(id).then((user) => {
+        done(null, user)
+    })
 })
 
 passport.use(new FacebookStrategy({
@@ -20,7 +21,7 @@ passport.use(new FacebookStrategy({
     clientSecret,
     callbackURL: "http://localhost:5000/auth/facebook/callback"
 }, (accessToken, refreshToken, profile, cb) => {
-    User.findOne({ userId: profile.id }, (currentUser) => {
+    User.findOne({ userId: profile.id }, (err, currentUser) => {
         if (currentUser) {
             console.log("User already exists!")
             cb(null, currentUser);
