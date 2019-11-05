@@ -1,10 +1,7 @@
-const router = require("next-routes")({
-    FBRouter: require("routes/auth-routes"),
-    ProfileRouter: require("routes/profile-routes")
-}).add("index", "/") // Home
-  .add("login")
-  .add("profile")
+const routes = require("next-routes")
 
+module.exports = routes()
+  .add("index", "/") // Home
+  .add("login", "/auth/login")
+  .add("profile", "/profile")
 
-
-module.exports = router;

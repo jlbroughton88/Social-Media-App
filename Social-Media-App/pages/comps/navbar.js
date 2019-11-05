@@ -1,11 +1,11 @@
-import Link from "next/link"
+import {Link} from "../../routes/routes"
 
-const Navbar = () => (
+const navbar = () => (
 <nav>
-    <Link href="/"><a>Home</a></Link>
-    <div>Log In</div>
-    <div>Log Out</div>
-    <Link href="/profile"><a>Profile</a></Link>
+    <Link route="/"><a>Home</a></Link>
+    <Link route="/auth/login"><a>Log In</a></Link>
+    <Link route="/auth/logout"><a>Log Out</a></Link>
+    <Link route="/profile"><a>Profile</a></Link>
 
     <style jsx>{`
         nav{
@@ -33,4 +33,4 @@ const Navbar = () => (
 </nav>
 )
 
-export default Navbar;
+export default navbar;

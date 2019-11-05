@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -139,10 +139,10 @@ const navbar = () => __jsx("nav", {
 
 /***/ }),
 
-/***/ "./pages/profile.js":
-/*!**************************!*\
-  !*** ./pages/profile.js ***!
-  \**************************/
+/***/ "./pages/login.js":
+/*!************************!*\
+  !*** ./pages/login.js ***!
+  \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -151,29 +151,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _comps_navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./comps/navbar */ "./pages/comps/navbar.js");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-
-const urlCheck = () => {
-  if (true) {
-    return false;
-  }
-
-  if (window.location.hash === "#_=_") {
-    history.replaceState ? history.replaceState(null, null, window.location.href.split("#")[0]) : window.location.hash = "";
-  }
+const Login = props => {
+  return __jsx("div", null, __jsx(_comps_navbar__WEBPACK_IMPORTED_MODULE_1__["default"], null), __jsx("h1", null, "Log in"), __jsx("a", {
+    href: "/auth/facebook"
+  }, "Login here"));
 };
 
-const Profile = props => {
-  urlCheck();
-  return __jsx("div", null, __jsx(_comps_navbar__WEBPACK_IMPORTED_MODULE_1__["default"], null), __jsx("h1", null, "This is your profile"));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Profile);
+/* harmony default export */ __webpack_exports__["default"] = (Login);
 
 /***/ }),
 
@@ -191,26 +179,15 @@ module.exports = routes().add("index", "/") // Home
 
 /***/ }),
 
-/***/ 5:
-/*!********************************!*\
-  !*** multi ./pages/profile.js ***!
-  \********************************/
+/***/ 4:
+/*!******************************!*\
+  !*** multi ./pages/login.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/JacobBroughton/coding/projects/Social-Media-App/pages/profile.js */"./pages/profile.js");
+module.exports = __webpack_require__(/*! /Users/JacobBroughton/coding/projects/Social-Media-App/pages/login.js */"./pages/login.js");
 
-
-/***/ }),
-
-/***/ "isomorphic-unfetch":
-/*!*************************************!*\
-  !*** external "isomorphic-unfetch" ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("isomorphic-unfetch");
 
 /***/ }),
 
@@ -248,4 +225,4 @@ module.exports = require("styled-jsx/style");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=profile.js.map
+//# sourceMappingURL=login.js.map

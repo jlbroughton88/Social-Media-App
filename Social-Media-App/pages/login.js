@@ -1,22 +1,14 @@
-import { useRouter} from "next/router";
-import Navbar from "./comps/Navbar"
+import Navbar from "./comps/navbar"
 
-const Login = ({children, href}) => {
-    const router = useRouter();
-    
-    const handleClick = e => {
-        e.preventDefault();
-        router.push(href)
-    }
+const Login = props => {
 
-    return(
-    <div>
-        <Navbar/>
-        <h1>Log in</h1>
-        <a href="/auth/facebook" onClick={handleClick}>Login here</a>
-    </div>
+    return (
+        <div>
+            <Navbar />
+            <h1>Log in</h1>
+            <a href="/auth/facebook">Login here</a>
+        </div>
     )
-
-};
+}
 
 export default Login;

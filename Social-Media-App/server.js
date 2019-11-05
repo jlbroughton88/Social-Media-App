@@ -11,12 +11,16 @@ require("dotenv").config();
 const instantListen = require("instant-listen");
 const MONGODB_URI = process.env.MONGODB_URI;
 
+
+
 const handler = instantListen(async () => {
+    const routes = require('./routes/routes')
     const app = next({ dev: process.env.NODE_ENV !== 'production' })
-    const handle = app.getRequestHandler();
+    const handle = routes.getRequestHandler(app);
     await app.prepare();
     return handle;
 })
+
 
 
 // app.prepare().then(() => {
@@ -32,7 +36,6 @@ mongoose.connect(MONGODB_URI, {
 
 
 
-
 server.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -43,9 +46,13 @@ server.use(passport.initialize());
 server.use(passport.session());
 
 
-server.use("/auth", authRoutes);
-server.use("/profile", profileRoutes)
+
+server.use("/auth/", authRoutes);
+server.use("/profile/", profileRoutes)
 server.get("*", handler);
+
+
+
 
 server.listen(5000, () => {
     console.log("Server listening at port 5000")

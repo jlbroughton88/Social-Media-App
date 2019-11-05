@@ -2,12 +2,14 @@ const router = require("express").Router();
 const passport = require("passport");
 
 router.get("/login", (req, res) => {
-    console.log("Redirected to login!")
+    console.log("Redirecting to login!")
 });
 
-// router.get("/logout", (req, res) => {
-//     res.logout();
-// });
+router.get("/logout", (req, res) => {
+    req.logout();
+    console.log("Logged out")
+    res.redirect("/")
+});
 
 router.get("/facebook", passport.authenticate("facebook"))
 

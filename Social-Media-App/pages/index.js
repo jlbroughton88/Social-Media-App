@@ -1,10 +1,13 @@
-import Navbar from "./comps/navbar"
+import Navbar from "./comps/navbar";
+import fetch from "isomorphic-unfetch";
 
-const Home = () => (
+
+
+const Index = (props) => (
     <div>
         <Navbar/>
-        Home
+        Hello 
     </div>
 )
 
-export default Home;
+export default Index;
