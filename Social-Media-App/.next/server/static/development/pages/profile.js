@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -173,6 +173,17 @@ const Profile = props => {
   return __jsx("div", null, __jsx(_comps_navbar__WEBPACK_IMPORTED_MODULE_1__["default"], null), __jsx("h1", null, "This is your profile"));
 };
 
+Profile.getInitialProps = async function () {
+  console.log("Trying to fetch");
+  const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default()("http://localhost:5000/");
+  const data = await res.json();
+  console.log(data);
+  console.log("fetched");
+  return {
+    user: data.user
+  };
+};
+
 /* harmony default export */ __webpack_exports__["default"] = (Profile);
 
 /***/ }),
@@ -191,7 +202,7 @@ module.exports = routes().add("index", "/") // Home
 
 /***/ }),
 
-/***/ 5:
+/***/ 3:
 /*!********************************!*\
   !*** multi ./pages/profile.js ***!
   \********************************/

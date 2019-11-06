@@ -7,6 +7,7 @@ const Index = (props) => (
     <div>
         <Navbar/>
         Hello 
+        {/* {props.user.userName} */}
     </div>
 )
 

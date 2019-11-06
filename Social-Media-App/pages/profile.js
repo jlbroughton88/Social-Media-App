@@ -15,7 +15,6 @@ const urlCheck = () => {
 
 
 
-
 const Profile = props => {
     urlCheck();
     return (
@@ -24,6 +23,19 @@ const Profile = props => {
             <h1>This is your profile</h1>
         </div>
     )
+}
+
+
+Profile.getInitialProps = async function() {
+    console.log("Trying to fetch")
+    const res = await fetch("http://localhost:5000/");
+    const data = await res.json();
+    console.log(data)
+    console.log("fetched")
+
+    return{
+        user: data.user
+    }
 }
 
 

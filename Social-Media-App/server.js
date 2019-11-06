@@ -10,6 +10,7 @@ const profileRoutes = require("./routes/profile-routes")
 require("dotenv").config();
 const instantListen = require("instant-listen");
 const MONGODB_URI = process.env.MONGODB_URI;
+const bodyParser = require("body-parser")
 
 
 
@@ -20,10 +21,6 @@ const handler = instantListen(async () => {
     await app.prepare();
     return handle;
 })
-
-
-
-// app.prepare().then(() => {
 
 // Connect to mongoose
 mongoose.connect(MONGODB_URI, {
@@ -39,11 +36,14 @@ mongoose.connect(MONGODB_URI, {
 server.use(session({
     secret: 'keyboard cat',
     resave: false,
-    saveUninitialized: true
-    // cookie: { secure: true }
-}))
+    saveUninitialized: true,
+    cookie: { maxAge: 3600000 }
+}));
 server.use(passport.initialize());
 server.use(passport.session());
+server.use(bodyParser.json())
+
+
 
 
 
