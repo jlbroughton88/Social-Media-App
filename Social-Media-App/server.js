@@ -13,7 +13,7 @@ const MONGODB_URI = process.env.MONGODB_URI;;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-
+const MongoStore = require('connect-mongo')(session);
 
 
 // Connect to mongoose
@@ -36,6 +36,7 @@ app.prepare().then(() => {
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: true,
+        store: new MongoStore({ mongooseConnection : mongoose.connection }),
         cookie: { maxAge: 3600000 }
     }));
     server.use(passport.initialize());
@@ -52,10 +53,9 @@ app.prepare().then(() => {
 
     server.listen(port, (err) => {
         if (err) throw err;
-        console.log("Server listening at port :" + port)
+        console.log("Server listening at port " + port)
     });
+}).catch((ex) => {
+console.error(ex.stack);
+process.exit(1)
 })
-// .catch((ex) => {
-//     console.error(ex.stack);
-//     process.exit(1)
-// })
