@@ -1,0 +1,45 @@
+{
+  "devFiles": [],
+  "pages": {
+    "/": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.82fec0793a3bf1f930f7.js",
+      "static/runtime/main-deb4a5c19d7cea891025.js"
+    ],
+    "/_app": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.82fec0793a3bf1f930f7.js",
+      "static/runtime/main-deb4a5c19d7cea891025.js"
+    ],
+    "/_error": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.82fec0793a3bf1f930f7.js",
+      "static/runtime/main-deb4a5c19d7cea891025.js"
+    ],
+    "/a": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.82fec0793a3bf1f930f7.js",
+      "static/runtime/main-deb4a5c19d7cea891025.js"
+    ],
+    "/comps/navbar": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.82fec0793a3bf1f930f7.js",
+      "static/runtime/main-deb4a5c19d7cea891025.js"
+    ],
+    "/index": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.82fec0793a3bf1f930f7.js",
+      "static/runtime/main-deb4a5c19d7cea891025.js"
+    ],
+    "/login": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.82fec0793a3bf1f930f7.js",
+      "static/runtime/main-deb4a5c19d7cea891025.js"
+    ],
+    "/profile": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.82fec0793a3bf1f930f7.js",
+      "static/runtime/main-deb4a5c19d7cea891025.js"
+    ]
+  }
+}
