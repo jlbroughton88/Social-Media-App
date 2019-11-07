@@ -1,1 +1,0 @@
-{"ast":null,"code":"var routes = require(\"next-routes\");\n\nmodule.exports = routes().add(\"index\", \"/\") // Home\n.add(\"login\", \"/auth/login\"); // .add(\"profile\", \"/profile/\")","map":null,"metadata":{},"sourceType":"script"}

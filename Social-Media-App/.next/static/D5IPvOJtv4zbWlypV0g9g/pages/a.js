@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{W4Pv:function(n,o,t){"use strict";t.r(o);var e=t("q1tI"),u=t.n(e).a.createElement;o.default=function(){return u("div",null,"hello")}},cNoJ:function(n,o,t){(window.__NEXT_P=window.__NEXT_P||[]).push(["/a",function(){return t("W4Pv")}])}},[["cNoJ",1,0]]]);

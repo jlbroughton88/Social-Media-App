@@ -1,11 +1,11 @@
-import {Link} from "../../routes/routes"
+import Link from "next/link"
 
 const navbar = () => (
 <nav>
-    <Link route="/"><a>Home</a></Link>
-    <Link route="/auth/login"><a>Log In</a></Link>
-    <Link route="/auth/logout"><a>Log Out</a></Link>
-    <Link route="/profile"><a>Profile</a></Link>
+    <Link href="/"><a>Home</a></Link>
+    <Link href="/auth/login"><a>Log In</a></Link>
+    <Link href="/auth/logout"><a>Log Out</a></Link>
+    <Link href="/profile"><a>Profile</a></Link>
 
     <style jsx>{`
         nav{
