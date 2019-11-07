@@ -1,4 +1,8 @@
-const router = require("express").Router();
+// const router = require("express").Router();
+const express = require("express")
+const server = express()
+const next = require("next");
+const app = next({ dev: process.env.NODE_ENV !== 'production' })
 
 // Authcheck
 const authCheck = (req, res, next) => {
@@ -6,14 +10,17 @@ const authCheck = (req, res, next) => {
         console.log("Not a user")
         res.redirect("/auth/login");
     } else {
+        console.log("User accepted!")
         next();
     }
 }
 
 // profile route
-router.get("/profile", authCheck, (req, res, next) => {
-    console.log("profile fetched for " + req.user.userName);
-    next();
+app.prepare().then(() => {
+    server.get("/", authCheck, (req, res, next) => {
+    return app.render(req, res, "/profile", req.query)
+})
 })
 
-module.exports = router;
+
+module.exports = server;

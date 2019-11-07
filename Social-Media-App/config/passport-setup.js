@@ -23,7 +23,7 @@ passport.use(new FacebookStrategy({
 }, (accessToken, refreshToken, profile, cb) => {
     User.findOne({ userId: profile.id }, (err, currentUser) => {
         if (currentUser) {
-            console.log("User already exists!")
+            console.log("User already exists!: " + currentUser)
             cb(null, currentUser);
         } else {
             new User({

@@ -1,8 +1,10 @@
 const router = require("express").Router();
 const passport = require("passport");
+const next = require("next");
+const app = next({ dev: process.env.NODE_ENV !== 'production' })
 
 router.get("/login", (req, res) => {
-    console.log("Redirecting to login!")
+    return app.render(req, res, "/login", req.query)
 });
 
 router.get("/logout", (req, res) => {
