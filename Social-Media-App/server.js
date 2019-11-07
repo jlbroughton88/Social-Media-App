@@ -41,7 +41,7 @@ app.prepare().then(() => {
     server.use(passport.initialize());
     server.use(passport.session());
 
-    server.use("/auth/", authRoutes);
+    server.use("/auth", authRoutes);
     server.use("/profile", profileRoutes);
 
     server.get('*', (req, res) => {
@@ -54,7 +54,8 @@ app.prepare().then(() => {
         if (err) throw err;
         console.log("Server listening at port :" + port)
     });
-}).catch((ex) => {
-    console.error(ex.stack);
-    process.exit(1)
 })
+// .catch((ex) => {
+//     console.error(ex.stack);
+//     process.exit(1)
+// })
