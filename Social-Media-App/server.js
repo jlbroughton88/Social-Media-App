@@ -31,8 +31,9 @@ mongoose.connect(MONGODB_URI, {
 app.prepare().then(() => {
     const server = express();
 
-    server.use(bodyParser.json());
+    
     server.use(bodyParser.urlencoded({ extended: false }));
+    server.use(bodyParser.json());
     server.use(session({
         secret: 'keyboard cat',
         resave: false,
