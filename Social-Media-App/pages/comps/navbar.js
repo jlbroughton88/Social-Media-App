@@ -2,10 +2,10 @@ import Link from "next/link"
 
 const navbar = () => (
 <nav>
-    <Link href="/"><a>Home</a></Link>
-    <Link href="/auth/login"><a>Log In</a></Link>
-    <Link href="/auth/logout"><a>Log Out</a></Link>
-    <Link href="/profile"><a>Profile</a></Link>
+    <Link href="/" as="/"><a>Home</a></Link>
+    <Link href="/auth/login" as="/auth/login"><a>Log In</a></Link>
+    <Link href="/auth/logout" as="/auth/logout"><a>Log Out</a></Link>
+    <Link href="/profile" as="/profile"><a>Profile</a></Link>
 
     <style jsx>{`
         nav{

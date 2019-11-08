@@ -4,21 +4,22 @@ const server = express()
 const next = require("next");
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 
-// Authcheck
-const authCheck = (req, res, next) => {
+// Check status
+const loggedIn = (req, res, next) => {
     if (!req.user) {
-        console.log("Not a user")
+        console.log("Not a registered user.")
         res.redirect("/auth/login");
     } else {
-        console.log("User accepted!")
+        console.log("Logged in already!")
         next();
     }
 }
 
 // profile route
 app.prepare().then(() => {
-    server.get("/", authCheck, (req, res, next) => {
+    server.get("/", loggedIn, (req, res, next) => {
     return app.render(req, res, "/profile", req.query)
+
 })
 })
 

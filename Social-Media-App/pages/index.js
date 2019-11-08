@@ -6,7 +6,7 @@ import fetch from "isomorphic-unfetch";
 const Index = (props) => (
     <div>
         <Navbar/>
-        Hello 
+        <h1>Home</h1>
         {/* {props.user.userName} */}
     </div>
 )

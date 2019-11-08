@@ -1,8 +1,21 @@
 import Navbar from "./comps/navbar";
 import fetch from "isomorphic-unfetch";
 
-const urlCheck = () => {
-    if(typeof window == "undefined"){
+
+
+class Profile extends React.Component {
+
+    static async getInitialProps() {
+        const res = await fetch("http://localhost:5000/api/user/personal")
+        const data = await res.json()
+        console.log(data)
+        return {
+            user: data.userName
+        };
+    }
+
+    urlCheck = () => {
+    if (typeof window == "undefined") {
         return false;
     }
 
@@ -12,18 +25,21 @@ const urlCheck = () => {
             : window.location.hash = "";
     }
 }
+    render() {
+        this.urlCheck()
+
+        return (
+            <div>
+                <Navbar />
+                <h1>{props.user}</h1>
+            </div>
+        )
+    }
 
 
-
-const Profile = () => {
-    urlCheck();
-    return (
-        <div>
-            <Navbar />
-            <h1>This is your profile</h1>
-        </div>
-    )
 }
+
+
 
 
 

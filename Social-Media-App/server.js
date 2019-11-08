@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const passportSetup = require("./config/passport-setup");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth-routes");
+const controllerRoutes = require("./routes/controllerRoutes")
 const passport = require("passport");
 const session = require("express-session");
 const profileRoutes = require("./routes/profile-routes");
@@ -36,13 +37,14 @@ app.prepare().then(() => {
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: true,
-        store: new MongoStore({ mongooseConnection : mongoose.connection }),
+        store: new MongoStore({ mongooseConnection: mongoose.connection }),
         cookie: { maxAge: 3600000 }
     }));
     server.use(passport.initialize());
     server.use(passport.session());
 
-    server.use("/auth", authRoutes);
+    server.use("/api/", controllerRoutes)
+    server.use("/auth/", authRoutes);
     server.use("/profile", profileRoutes);
 
     server.get('*', (req, res) => {
@@ -56,6 +58,6 @@ app.prepare().then(() => {
         console.log("Server listening at port " + port)
     });
 }).catch((ex) => {
-console.error(ex.stack);
-process.exit(1)
+    console.error(ex.stack);
+    process.exit(1)
 })
