@@ -1,6 +1,7 @@
 const express = require("express");
 const next = require("next");
 const bodyParser = require("body-parser");
+const cors = require("cors")
 const passportSetup = require("./config/passport-setup");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth-routes");
@@ -31,9 +32,9 @@ mongoose.connect(MONGODB_URI, {
 app.prepare().then(() => {
     const server = express();
 
-    
-    server.use(bodyParser.urlencoded({ extended: false }));
     server.use(bodyParser.json());
+    server.use(bodyParser.urlencoded({ extended: false }));
+    server.use(cors());
     server.use(session({
         secret: 'keyboard cat',
         resave: false,
@@ -49,6 +50,9 @@ app.prepare().then(() => {
     server.use("/profile", profileRoutes);
 
     server.get('*', (req, res) => {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        // res.header("Accept", 'application/json')
         return handle(req, res);
     });
 
