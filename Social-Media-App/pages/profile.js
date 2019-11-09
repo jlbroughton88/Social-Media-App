@@ -24,7 +24,7 @@ const Profile = ( props ) => {
 
 Profile.getInitialProps = async () => {
     const res = await fetch("http://localhost:5000/api/user/personal")
-    const data = await res.text()
+    const data = await res.json()
     return { 
         user: data 
     }
