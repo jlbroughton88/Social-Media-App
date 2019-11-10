@@ -1,4 +1,5 @@
 import Navbar from "./comps/navbar"
+import Link from "next/link"
 
 const urlCheck = () => {
     if (typeof window == "undefined") { return false }
@@ -12,12 +13,12 @@ const urlCheck = () => {
 const Login = props => {
 
     urlCheck()
-    return (
 
+    return (
         <div>
             <Navbar />
             <h1>Log in</h1>
-            <a href="/auth/facebook">Login here</a>
+            <Link href="/auth/facebook"><a >Login here</a></Link>
         </div>
     )
 }

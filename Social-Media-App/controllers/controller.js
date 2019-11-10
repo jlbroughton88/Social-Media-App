@@ -5,7 +5,9 @@ const fetch = require("isomorphic-unfetch")
 
 
 exports.personal_entry_info = (req, res) => {
+    console.log(req.user)
     if (req.user) {
+        console.log("CONTROLLER")
         let currentUserId = req.user.userId
         db.model("User").findOne({ userId: currentUserId }, (err, result) => {
             res.send(result)

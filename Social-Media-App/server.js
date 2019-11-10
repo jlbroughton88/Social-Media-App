@@ -48,6 +48,7 @@ app.prepare().then(() => {
     server.use("/api/", controllerRoutes)
     server.use("/auth/", authRoutes);
     server.use("/profile", profileRoutes);
+   
 
     server.get('*', (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");

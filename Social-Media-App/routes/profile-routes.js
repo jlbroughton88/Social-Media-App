@@ -1,5 +1,6 @@
 // const router = require("express").Router();
 const express = require("express")
+const router = express.Router();
 const server = express()
 const next = require("next");
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
@@ -16,12 +17,13 @@ const loggedIn = (req, res, next) => {
 }
 
 // profile route
-app.prepare().then(() => {
-    server.get("/", loggedIn, (req, res, next) => {
+// app.prepare().then(() => {
+router.get("/", loggedIn, (req, res) => {
+    console.log(res)
     return app.render(req, res, "/profile", req.query)
 
 })
-})
+// })
 
 
 module.exports = server;
