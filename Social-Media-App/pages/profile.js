@@ -10,30 +10,38 @@ const urlCheck = () => {
             : window.location.hash = "";
     }
 }
-const Profile = ( props ) => {
+const Profile = (props) => {
     urlCheck();
+    console.log(props)
     return (
         <div>
             <Navbar />
             Profile
             <h1>
-              {props.user.userName}  
+                {props.user.userName}
             </h1>
-        
+
         </div>
     )
 
 }
 
-Profile.getInitialProps = async () => {
-    console.log("Getting initial props")
-    const res = await fetch("http://localhost:5000/api/user/personal")
-    console.log("Got initial props")
-    const data = await res.json()
-    
-    return { 
-        user: data
-    }
+Profile.getInitialProps = async ({ req, res }) => {
+    // console.log(req)
+    // if (req) {
+    //     res.redirect("/auth/login")
+    // } else {
+    //     console.log("Getting initial props")
+    //     const result = await fetch("http://localhost:5000/api/user/personal")
+    //     console.log("Got initial props")
+    //     const data = await result.text()
+    //     const parsedData = JSON.parse(data)
+    //     return {
+    //         user: parsedData.userName
+    //     }
+    // }
+    // console.log(req.user)
+    return { user: req.user }
 }
 
 export default Profile;

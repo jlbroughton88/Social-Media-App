@@ -19,7 +19,6 @@ const loggedIn = (req, res, next) => {
 // profile route
 // app.prepare().then(() => {
 router.get("/", loggedIn, (req, res) => {
-    console.log(res)
     return app.render(req, res, "/profile", req.query)
 
 })
