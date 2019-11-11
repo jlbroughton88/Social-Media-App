@@ -10,14 +10,15 @@ const urlCheck = () => {
             : window.location.hash = "";
     }
 }
+
 const Profile = (props) => {
     urlCheck();
-    console.log(props)
     return (
         <div>
             <Navbar />
             Profile
             <h1>
+                {/* { props } */}
                 {props.user.userName}
             </h1>
 
@@ -26,22 +27,19 @@ const Profile = (props) => {
 
 }
 
-Profile.getInitialProps = async ({ req, res }) => {
-    // console.log(req)
-    // if (req) {
+Profile.getInitialProps = async (ctx) => {
+    // if (!ctx.req.user) {
     //     res.redirect("/auth/login")
     // } else {
-    //     console.log("Getting initial props")
-    //     const result = await fetch("http://localhost:5000/api/user/personal")
-    //     console.log("Got initial props")
-    //     const data = await result.text()
-    //     const parsedData = JSON.parse(data)
-    //     return {
-    //         user: parsedData.userName
-    //     }
-    // }
-    // console.log(req.user)
-    return { user: req.user }
+    
+    if (typeof window === 'undefined') {
+        console.log("this is the server!")
+        return { user: ctx.req.user }
+    } else {
+        const res = await fetch("http://localhost:5000/api/user/makepersonal")
+        const data = await res.json()
+        return { user: data }
+    }
 }
 
 export default Profile;

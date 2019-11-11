@@ -49,8 +49,8 @@ app.prepare().then(() => {
     server.use("/auth/", authRoutes);
     server.use("/profile", profileRoutes);
    
-
     server.get('*', (req, res) => {
+        // console.log(req)
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         // res.header("Accept", 'application/json')

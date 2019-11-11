@@ -11,4 +11,12 @@ const Index = (props) => (
     </div>
 )
 
+Index.getInitialProps = async ({req}) => {
+    if(req) {
+        return { user: req.user }
+    } else {
+        return ( "Welcome!" )
+    }
+}
+
 export default Index;

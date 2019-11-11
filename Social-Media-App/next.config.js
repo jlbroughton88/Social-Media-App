@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 module.exports = {
-    distDir: "_next", 
+    distDir: ".next", 
     pageExtensions: ['jsx', 'js'],
     generateBuildId: async() => {
         if(process.env.BUILD_ID){

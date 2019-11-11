@@ -6,7 +6,7 @@ const clientSecret = process.env.CLIENT_SECRET;
 const User = require("../models/User");
 
 passport.serializeUser((user, done) => {
-    console.log("Serializing user...");
+    // console.log("Serializing user...");
     done(null, user.id);
 })
 
@@ -23,15 +23,15 @@ passport.use(new FacebookStrategy({
 }, (accessToken, refreshToken, profile, cb) => {
     User.findOne({ userId: profile.id }, (err, currentUser) => {
         if (currentUser) {
-            console.log("User already exists!: " + currentUser)
+            // console.log("User already exists!: " + currentUser)
             cb(null, currentUser);
         } else {
             new User({
                 userId: profile.id,
                 userName: profile.displayName
             }).save().then((newUser) => {
-                console.log("User has been created!")
-                console.log(newUser)
+                // console.log("User has been created!")
+                // console.log(newUser)
                 cb(null, newUser)
             })
         }

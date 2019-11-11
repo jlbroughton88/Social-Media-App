@@ -33,4 +33,9 @@ const navbar = () => (
 </nav>
 )
 
+// navbar.getInitialProps = async ({ req }) => {
+//     console.log("THIS IS THE NAV BAR " + req + " END OF NAVBAR")
+//     return{ user: req.user }
+// }
+
 export default navbar;
