@@ -1,0 +1,15 @@
+{
+    "name": "social-media-app-serverless",
+    "version": 2,
+    "build": {
+        "env": {
+            "AUTH0_DOMAIN": "social-media-app-serverless.auth0.com", 
+            "AUTH0_CLIENT_ID": "mGq4San5DxY7YfcI89zUt0k4AhahfEz0",
+            "AUTH_CLIENT_SECRET": "@auth_client_secret",
+            "REDIRECT_URI": "http://localhost:5000/api/callback",
+            "POST_LOGOUT_REDIRECT_URI": "http://localhost:5000/",
+            "SESSION_COOKIE_SECRET": "@session_cookie_secret",
+            "SESSION_COOKIE_LIFETIME":"7200"
+        }
+    }
+}
